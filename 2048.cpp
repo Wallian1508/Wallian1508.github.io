@@ -60,9 +60,31 @@ int main()
         }
     }
 
+    gotoxy(0, 0);
+    
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            if(data[i][j] == 0)
+                cout<< "     " << flush;
+            else if(data[i][j] < 10)
+                cout<< "    " << data[i][j] <<flush;
+            else if(data[i][j] / 10 < 10)
+                cout<< "   " << data[i][j] <<flush;
+            else if(data[i][j] / 100 < 10)
+                cout<< "  " << data[i][j] <<flush;
+            else if(data[i][j] / 1000 < 10)
+                cout<< " " << data[i][j] <<flush;
+            else
+                cout<< data[i][j] <<flush;
+            cout<< "  " <<flush;
+        }
+        cout<< "\n\n" <<flush;
+    }
+
     while(true)
     {
-        gotoxy(0, 0);
         // 檢查是否有按鍵輸入
         if(_kbhit()) {
             char in = _getch(); // 取得按下的字元
@@ -105,6 +127,27 @@ int main()
                         data[loca / 4][loca % 4] = num;
                         f = true;
                     }
+                }
+                gotoxy(0, 0);
+                for(int i = 0; i < 4; i++)
+                {
+                    for(int j = 0; j < 4; j++)
+                    {
+                        if(data[i][j] == 0)
+                            cout<< "     " << flush;
+                        else if(data[i][j] < 10)
+                            cout<< "    " << data[i][j] <<flush;
+                        else if(data[i][j] / 10 < 10)
+                            cout<< "   " << data[i][j] <<flush;
+                        else if(data[i][j] / 100 < 10)
+                            cout<< "  " << data[i][j] <<flush;
+                        else if(data[i][j] / 1000 < 10)
+                            cout<< " " << data[i][j] <<flush;
+                        else
+                            cout<< data[i][j] <<flush;
+                        cout<< "  " <<flush;
+                    }
+                    cout<< "\n\n" <<flush;
                 }
             }
 
@@ -315,31 +358,33 @@ int main()
                 if(data[loca / 4][loca % 4] == 0)
                 {
                     data[loca / 4][loca % 4] = num;
+                    
+                    gotoxy(0, 0);
+                    for(int i = 0; i < 4; i++)
+                    {
+                        for(int j = 0; j < 4; j++)
+                        {
+                            if(data[i][j] == 0)
+                                cout<< "     " << flush;
+                            else if(data[i][j] < 10)
+                                cout<< "    " << data[i][j] <<flush;
+                            else if(data[i][j] / 10 < 10)
+                                cout<< "   " << data[i][j] <<flush;
+                            else if(data[i][j] / 100 < 10)
+                                cout<< "  " << data[i][j] <<flush;
+                            else if(data[i][j] / 1000 < 10)
+                                cout<< " " << data[i][j] <<flush;
+                            else
+                                cout<< data[i][j] <<flush;
+                            cout<< "  " <<flush;
+                        }
+                        cout<< "\n\n" <<flush;
+                    }
                     f = true;
                 }
             }
         }
 
-        for(int i = 0; i < 4; i++)
-        {
-            for(int j = 0; j < 4; j++)
-            {
-                if(data[i][j] == 0)
-                    cout<< "     " << flush;
-                else if(data[i][j] < 10)
-                    cout<< "    " << data[i][j] <<flush;
-                else if(data[i][j] / 10 < 10)
-                    cout<< "   " << data[i][j] <<flush;
-                else if(data[i][j] / 100 < 10)
-                    cout<< "  " << data[i][j] <<flush;
-                else if(data[i][j] / 1000 < 10)
-                    cout<< " " << data[i][j] <<flush;
-                else
-                    cout<< data[i][j] <<flush;
-                cout<< "  " <<flush;
-            }
-            cout<< "\n\n" <<flush;
-        }
         Sleep(16); 
     }
 
