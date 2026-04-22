@@ -24,6 +24,7 @@ int main()
     uniform_int_distribution<> loc(0, 15);
     uniform_int_distribution<> tf(0, 9);
     int data[4][4];
+    bool end = 0;
     for(int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 4; j++)
@@ -93,6 +94,10 @@ int main()
             
             if(in == 'r' || in == 'R')
             {
+                end = 0;
+                gotoxy(0, 3);
+                cout<< "                            |\n\n" << flush;
+                cout<< "                            " << flush;
                 for(int i = 0; i < 4; i++)
                 {
                     for(int j = 0; j < 4; j++)
@@ -343,6 +348,36 @@ int main()
                         }
                     }
                 }
+            }
+            
+            bool have0 = 0, move = 1;
+
+            for(int i = 0; i < 4 && !have0; i++)
+            {
+                for(int j = 0; j < 4 && !have0; j++)
+                {
+                    if(data[i][j] == 0)
+                        have0 = 1;
+                }
+            }
+
+            for(int k = 0; k < 4 && move; k++)
+            {
+                for(int l = 0; l < 3 && move; l++)
+                {
+                    if(data[k][l] == data[k][l + 1] || data[l][k] == data[l + 1][k])
+                    {
+                        move = 0;
+                    }
+                }
+            }
+
+            if(!have0 && move && !end)
+            {
+                end = 1;
+                gotoxy(5, 3);
+                cout<< "     GAME OVER    \n" << endl;
+                cout<< "     press [R] to Reset   " << endl;
             }
 
             while(!f)
