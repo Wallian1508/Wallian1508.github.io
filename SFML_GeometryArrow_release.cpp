@@ -481,7 +481,7 @@ int main()
             countornot = false;
         }
 
-        color += 0.015;
+        color += 10 * dt;
         if (color > 360)
             color -= 360;
         tube1.setFillColor(hslToColor(color, 1.0f, 0.5f));
